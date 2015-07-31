@@ -2169,7 +2169,7 @@ void cmd_debuglog(I3_CMD, const char *argument) {
  * Implementation of 'gaps inner|outer current|all set|plus|minus <px>'
  *
  */
-void cmd_gaps(I3_CMD, const char *type, const char *scope, const char *mode, const char *value) {
+void cmd_gaps(I3_CMD, const char *type, const char *scope, const char *side, const char *mode, const char *value) {
 #define CMD_GAPS(type, other)                                      \
     int pixels = atoi(value);                                      \
     Con *workspace = con_get_workspace(focused);                   \

@@ -1503,8 +1503,8 @@ Con *con_descend_direction(Con *con, direction_t direction) {
  */
 Rect con_border_style_rect(Con *con) {
     if ((config.smart_borders == ON && con_num_visible_children(con_get_workspace(con)) <= 1) ||
-        (config.smart_borders == NO_GAPS && calculate_effective_gaps(con).outer == 0) ||
-        (config.hide_edge_borders == HEBM_SMART && con_num_visible_children(con_get_workspace(con)) <= 1)) {
+        (((config.smart_borders == NO_GAPS && calculate_effective_gaps(con).outer == 0) ||
+        (config.hide_edge_borders == HEBM_SMART && con_num_visible_children(con_get_workspace(con)) <= 1)) && !has_outer_gaps(calculate_effective_gaps(con))) {
         if (!con_is_floating(con))
             return (Rect){0, 0, 0, 0};
     }
